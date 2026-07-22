@@ -8,7 +8,12 @@
     let messages = $state([]);
 
     let token = null;
+    let menuVisible = $state(true);
 
+    function toggleMenu() {
+        menuVisible = !menuVisible;
+    }
+    
     onMount(async () => {
         
         token = tokenManager.ensure();
@@ -248,24 +253,12 @@
             console.error("Erreur :", error);
         }
     };
-    const hideShow = function () {
-        const convEle = document.querySelector("app>button");
-        const header = document.querySelector("header");
-        const main = document.querySelector("main");
-        if (header.style.display == "none") {
-            header.style.display = "block";
-            if (window.innerWidth < 800) {
-                main.style.height = "80vh";
-            }
-        } else {
-            header.style.display = "none";
-            main.style.height = "100vh";
-        }
-    };
+
 </script>
 
 <div id="app">
-    <button type="button" on:click={hideShow}>=</button>
+    <button type="button" on:click={toggleMenu}>=</button>
+    {#if menuVisible}
     <header>
         <h1>Conversations<span style="font-size: xx-small;"> v0.1.0</span></h1>
         
@@ -297,7 +290,8 @@
             <button type="submit">Creer</button>
         </form>
     </header>
-    <main>
+    {/if}
+    <main class:full-height={!menuVisible}>
         <div>
             {#each messages as msg}
                 <section class={msg.role}>

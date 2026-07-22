@@ -16,7 +16,7 @@ export const tokenManager = {
     ensure() {
         let token = this.get();
 
-        if (!token) {
+        if (!token || token == 'null') {
             token = prompt("Token Mistral :");
 
             if (token) {
