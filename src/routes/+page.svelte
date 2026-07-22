@@ -1,4 +1,5 @@
 <script>
+    import { tokenManager } from "$lib/token";
     import { onMount } from "svelte";
     import SvelteMarkdown from "@humanspeak/svelte-markdown";
 
@@ -9,14 +10,8 @@
     let token = null;
 
     onMount(async () => {
-        token = localStorage.getItem("token");
-
-        const tokenIsMissing = token === null || token == 'null' || token.length < 1;
         
-        if (tokenIsMissing) {
-            token = prompt("save the token for this session :");
-            localStorage.setItem("token", token);
-        }
+        token = tokenManager.ensure();
 
         let headersList = {
             apikey: "sb_publishable_6ghal1j3MjMFz3bd7bjV5A_M-wOjNFR",
