@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="text-scale" content="scale" />
+	%sveltekit.head%
+
+	<style>
+		
+		body {
+        padding: 0;
+        margin: 0;
+        background-color: darkgrey;
+    }
+
+    #app {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100vh;
+        padding: 5px;
+        margin: 0;
+
+        > button {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 25px;
+        }
+
+        header {
+            height: 20vh;
+
+            h1 {
+                margin: 5px 25px;
+            }
+
+            section {
+                overflow-y: scroll;
+                height: 10vh;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+            }
+
+            section > div {
+                margin: 1px 0;
+            }
+
+            form {
+                padding: 5px 0;
+            }
+        }
+
+        main {
+            height: 80vh;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+
+            > div:first-child {
+                overflow-y: scroll;
+                overflow-x: hidden;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+            }
+
+            > div:last-child {
+                text-align: right;
+                margin: 10px 1px;
+
+                form {
+                    display: flex;
+                    flex-direction: row;
+                }
+
+                input {
+                    width: 100%;
+                }
+            }
+
+            section {
+                margin: 20px 0;
+            }
+
+            .human {
+                border: 1px solid blue;
+                padding: 5px 10px 5px 5px;
+                margin-left: 20px;
+                border-radius: 15px;
+                overflow-x: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+                text-align: right;
+            }
+
+            .ia {
+                border: 1px solid green;
+                padding: 5px 5px 5px 10px;
+                margin-right: 20px;
+                border-radius: 15px;
+                overflow-x: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+                text-align: left;
+            }
+        }
+    }
+		@media screen and (min-width:800px) {
+				#app {
+					display: flex;
+					justify-content:space-between;
+					flex-direction: row;
+				}
+				header {
+					width: 20vw;
+					height: 90vh;
+					padding: 10px;
+					margin: 0;
+				}
+				#app header h1 {
+            margin: 10px 0px;
+        }
+
+
+				#app main {
+					height: 100vh;
+					width: 100vw;
+					display: flex;
+					justify-content: space-between;
+					flex-direction: column;
+				}
+			}
+	</style>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
+</html>
