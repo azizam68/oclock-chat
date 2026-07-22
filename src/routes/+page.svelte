@@ -11,7 +11,7 @@
     onMount(async () => {
         token = localStorage.getItem("token");
 
-        const tokenIsMissing = token === null || token.length < 1;
+        const tokenIsMissing = token === null || token == 'null' || token.length < 1;
         
         if (tokenIsMissing) {
             token = prompt("save the token for this session :");
